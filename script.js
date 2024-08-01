@@ -66,7 +66,6 @@ class Juego {
     
   }
 
-  
 class Jugador {
     constructor(nombre) {
       this.nombre = nombre;
@@ -112,8 +111,6 @@ class Categoria {
   juegoNuevo.agregarJugador("Nati");
   juegoNuevo.agregarJugador("Nai");
   juegoNuevo.agregarJugador("Juli S");
-
-
 
   let armas = new Categoria("Armas");
   armas.addItem("cuchillo");
@@ -194,10 +191,26 @@ class Categoria {
         seguirAgregando=false;
       }
     }
-
-
   }
   
+  function editarJuego() {
+    $(document).ready(function() {
+      $("#botonEditar").click(function() {
+        $("#botonJugadores").toggle();
+        $("#botonAgregarCategorias").toggle();
+        $("#botonAgregarItem").toggle();
+      });
+    });
+  }
+
+
+
+
+
+
+
+
+
 
   //vacio la "Información Confidencial"
   //let informacionConfidencial=[];
