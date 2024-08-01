@@ -78,7 +78,10 @@ class Jugador {
     }
 
     mostrarInformacion() {
+      alert('acepte para mostrar informacion');
       console.log(`Informacion de ${this.nombre}:`, this.info);
+      alert('avisa si miraste la informacion');
+      console.clear();
     }
   }
   
@@ -104,24 +107,47 @@ class Categoria {
   //creo una nueva instancia de juego
   let juegoNuevo = new Juego
   //campos de prueba
-  juegoNuevo.agregarJugador("Juli");
-  juegoNuevo.agregarJugador("Agus");
-  juegoNuevo.agregarJugador("Lauti");
+  juegoNuevo.agregarJugador("Juli B");
+  juegoNuevo.agregarJugador("Lia");
+  juegoNuevo.agregarJugador("Nati");
+  juegoNuevo.agregarJugador("Nai");
+  juegoNuevo.agregarJugador("Juli S");
+
+
 
   let armas = new Categoria("Armas");
-  armas.addItem("Molotov");
-  armas.addItem("Motosierra");
-  armas.addItem("Pluma");
-  armas.addItem("Rayo Laser");
+  armas.addItem("cuchillo");
+  armas.addItem("candelabro");
+  armas.addItem("pistola");
+  armas.addItem("veneno");
+  armas.addItem("trofeo");
+  armas.addItem("cuerda");
+  armas.addItem("bate");
+  armas.addItem("hacha");
+  armas.addItem("pesas");
 
   let lugares = new Categoria("Lugares");
-  lugares.addItem("Venado Tuerto");
-  lugares.addItem("Goya");
-  lugares.addItem("Vaca Muerta");
-  lugares.addItem("Villa Gesel");
+  lugares.addItem("vestibulo");
+  lugares.addItem("comedor");
+  lugares.addItem("cocina");
+  lugares.addItem("patio");
+  lugares.addItem("observatorio");
+  lugares.addItem("teatro");
+  lugares.addItem("sala");
+  lugares.addItem("spa");
+  lugares.addItem("hab de huespedes");
+
+  let sospechosos = new Categoria("Sospechosos");
+  sospechosos.addItem("Moradillo");
+  sospechosos.addItem("Blanco");
+  sospechosos.addItem("Mostaza");
+  sospechosos.addItem("Verdi");
+  sospechosos.addItem("Escarlata");
+  sospechosos.addItem("Azulino");
 
   juegoNuevo._categorias.push(armas);
   juegoNuevo._categorias.push(lugares);
+  juegoNuevo._categorias.push(sospechosos);
 
   function inicioJuego(){
     juegoNuevo.iniciarJuego();
