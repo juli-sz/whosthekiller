@@ -1,4 +1,6 @@
 import Juego from './models/Juego.js';
+import Categoria from './models/Categoria.js';
+import Jugador from './models/Jugador.js';
 
 import { agregarCategorias, agregarItem, agregarJugadores, editarJuego } from './funciones/ui.js';
 import { cargarDatosIniciales, reiniciarDatosIniciales } from './funciones/datosIniciales.js';
