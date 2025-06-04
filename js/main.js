@@ -1,4 +1,4 @@
-import Juego from './clases/Juego.js';
+import Juego from './models/Juego.js';
 import { agregarCategorias, agregarItem, agregarJugadores, editarJuego } from './funciones/ui.js';
 import { cargarDatosIniciales } from './funciones/datosIniciales.js';
 
