@@ -22,11 +22,26 @@ describe('Juego', () => {
   });
 
   test('mezcla los items aleatoriamente', () => {
-    const items = ['a', 'b', 'c'];
-    const copia = [...items];
-    juego.mezclarItems(items);
-    expect(items).not.toEqual(copia); // Podría no fallar, pero da una idea
-  });
+  const items = ['a', 'b', 'c'];
+  const copia = [...items];
+  
+  juego.mezclarItems(items);
+
+  // Ensure items are shuffled
+  let isShuffled = copia.some((item, index) => item !== items[index]);
+  expect(isShuffled).toBeTruthy();
+
+  // If not shuffled, try multiple shuffle attempts
+  if (!isShuffled) {
+    for (let i = 0; i < 5; i++) {
+      juego.mezclarItems(items);
+      isShuffled = copia.some((item, index) => item !== items[index]);
+      if (isShuffled) break;
+    }
+  }
+
+  expect(isShuffled).toBeTruthy();
+});
 
   test('reparte items equitativamente', () => {
     const j1 = new Jugador('A');
