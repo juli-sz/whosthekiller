@@ -1,3 +1,5 @@
+
+
 import { juegoNuevo } from '../main.js';
 
 export function agregarCategorias() {

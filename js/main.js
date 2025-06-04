@@ -1,8 +1,8 @@
 import Juego from './models/Juego.js';
 
 import { agregarCategorias, agregarItem, agregarJugadores, editarJuego } from './funciones/ui.js';
-import { cargarDatosIniciales } from './funciones/datosIniciales.js';
-
+import { cargarDatosIniciales, reiniciarDatosIniciales } from './funciones/datosIniciales.js';
+import { agregarCategorias, agregarJugadores, agregarItem, editarJuego } from './funciones/ui.js';
 export const juegoNuevo = new Juego();
 cargarDatosIniciales(juegoNuevo);
 
@@ -23,4 +23,5 @@ $(document).ready(function () {
   $("#botonJugadores").click(agregarJugadores);
   $("#botonAgregarCategorias").click(agregarCategorias);
   $("#botonAgregarItem").click(agregarItem);
+  $("#botonReiniciar").click(() => reiniciarDatosIniciales(juegoNuevo));
 });
