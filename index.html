@@ -33,6 +33,23 @@
             </div>
         </div>
     </div>
+    <script>
+        // ...definición de Juego, Jugador, Categoria...
+
+        fetch('ejemplo.json')
+          .then(response => response.json())
+          .then(data => {
+            // Jugadores
+            data.jugadores.forEach(nombre => juegoNuevo.agregarJugador(nombre));
+
+            // Categorías
+            data.categorias.forEach(catData => {
+              let categoria = new Categoria(catData.nombre);
+              catData.items.forEach(item => categoria.addItem(item));
+              juegoNuevo._categorias.push(categoria);
+            });
+          });
+    </script>
 </body>
 <footer>
     <!-- <div> </div>  -->
