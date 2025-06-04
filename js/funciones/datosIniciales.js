@@ -1,4 +1,4 @@
-import Categoria from '../clases/Categoria.js';
+import Categoria from '../models/Categoria.js';
 
 export function cargarDatosIniciales(juego) {
   juego.agregarJugador("Juli B");
