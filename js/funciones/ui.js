@@ -1,5 +1,3 @@
-
-
 import { juegoNuevo } from '../main.js';
 
 export function agregarCategorias() {
@@ -46,3 +44,11 @@ export function editarJuego() {
   $("#botonAgregarCategorias").toggle();
   $("#botonAgregarItem").toggle();
 }
+
+// Haz accesibles las funciones desde el HTML
+window.agregarJugadores = agregarJugadores;
+window.agregarCategorias = agregarCategorias;
+window.agregarItem = agregarItem;
+window.editarJuego = editarJuego;
+window.inicioJuego = inicioJuego;
+window.verMarcador = verMarcador;
