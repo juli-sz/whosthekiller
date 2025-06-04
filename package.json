@@ -7,7 +7,7 @@
   "description": "Bienvenido a\r Who's the killer?\r Presione \"ayuda\" para acceder a las indicaciones del juego\r El juego consiste en adivinar quien, como y donde cometió el crimen\r Buena Suerte y disfruten el juego!!",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "jest"
   },
   "dependencies": {
     "ansi-escapes": "^4.3.2",
