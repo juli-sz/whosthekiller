@@ -1,6 +1,6 @@
-import { Juego } from '../js/models/Juego.js';
-import { Jugador } from '../js/models/Jugador.js';
-import { Categoria } from '../js/models/Categoria.js';
+import Juego from '../js/models/Juego.js';
+import Jugador from '../js/models/Jugador.js';
+import Categoria from '../js/models/Categoria.js';
 
 describe('Juego', () => {
   let juego;

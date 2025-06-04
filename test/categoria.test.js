@@ -1,4 +1,4 @@
-import { Categoria } from '../js/categoria.js';
+import Categoria from '../js/models/Categoria.js';
 
 describe('Categoria', () => {
   test('debe guardar nombre correctamente', () => {

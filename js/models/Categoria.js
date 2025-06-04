@@ -1,3 +1,6 @@
+import Jugador from './Jugador.js';
+import Juego from './Juego.js';
+
 export default class Categoria {
   constructor(nombre) {
     this.nombre = nombre;

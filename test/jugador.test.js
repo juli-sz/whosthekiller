@@ -1,4 +1,4 @@
-import { Jugador } from '../js/jugador.js';
+import Jugador from '../js/models/Jugador.js';
 
 describe('Jugador', () => {
   test('debe crear un jugador con nombre', () => {
@@ -12,4 +12,3 @@ describe('Jugador', () => {
     expect(jugador.info).toContain('cuchillo');
   });
 });
-//comentario
