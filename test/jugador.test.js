@@ -12,3 +12,4 @@ describe('Jugador', () => {
     expect(jugador.info).toContain('cuchillo');
   });
 });
+//comentario
