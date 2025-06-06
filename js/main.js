@@ -1,6 +1,6 @@
 import Categoria from './models/Categoria.js';
 import Jugador from './models/Jugador.js';
-import {ui} from './funciones/ui.js';
+import ui from './funciones/ui.js';
 
 // function verMarcador() {
 //   alert("Ganadores anteriores:\n" + juegoNuevo.ganadores.join(", "));

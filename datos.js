@@ -1,4 +1,4 @@
-
+const datos =
 {
   "jugadores": ["Juli B", "Lia", "Nati", "Nai", "Juli S"],
   "categorias": [
@@ -16,3 +16,5 @@
     }
   ]
 }
+
+export default datos;

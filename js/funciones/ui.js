@@ -1,13 +1,17 @@
 import Categoria from "../models/Categoria.js";
 import Jugador from "../models/Jugador.js";
+//import datos from "../datos.json" assert { type: "json" };
+import datos from "../datos.js"; // Importamos los datos desde un archivo JS
+
+
 
 
 export default class UI {
   constructor() {
-    this.jugadores = [];
-    this.categorias = [];
+    this.jugadores = datos.jugadores;
+    this.categorias = datos.categorias;
     // Información secreta de los jugadores
-    this._informacionSecreta = [];
+    this.informacionSecreta = [];
   }
 
   agregarJugador(nombre) {
@@ -71,22 +75,28 @@ export default class UI {
     // Lógica para mostrar el marcador
   }
   inicioJuego() {
+    //cargar datos de jugadores y categorías
+    if (this.jugadores.length === 0 || this.categorias.length === 0) {
+      this.jugadores = datos.jugadores;
+      this.categorias = datos.categorias;
+      alert("No hay jugadores ni categorías. Se han cargado los datos iniciales.");
+    }
     if (this.jugadores.length < 2 || this.categorias.length < 2) {
       return alert("Debe agregar al menos dos jugadores y dos categorías antes de iniciar el juego.");
     }
     this.jugadores.forEach(j => j.mostrarInformacion());
     this.mostrarInformacionSecreta();
     alert("¡El juego ha comenzado!");
-    this._informacionSecreta = [];
-      this._categorias.forEach(cat => {
+    this.informacionSecreta = [];
+      this.categorias.forEach(cat => {
         this.mezclarItems(cat.items);
         const item = cat.items.pop();
-        this._informacionSecreta.push(item);
+        this.informacionSecreta.push(item);
       });
       this.repartirItems();
   }
   mostrarInformacionSecreta() {
-    this._informacionSecreta.forEach((info, index) => {
+    this.informacionSecreta.forEach((info, index) => {
       alert(`Información secreta del jugador ${index + 1}: ${info}`);
     });
   }
