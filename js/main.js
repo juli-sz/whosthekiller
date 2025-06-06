@@ -2,14 +2,18 @@ import Juego from './models/Juego.js';
 import Categoria from './models/Categoria.js';
 import Jugador from './models/Jugador.js';
 
+
 import { agregarCategorias, agregarItem, agregarJugadores, editarJuego } from './funciones/ui.js';
 import { cargarDatosIniciales, reiniciarDatosIniciales } from './funciones/datosIniciales.js';
-import { agregarCategorias, agregarJugadores, agregarItem, editarJuego } from './funciones/ui.js';
+
 export const juegoNuevo = new Juego();
 cargarDatosIniciales(juegoNuevo);
 
 function inicioJuego() {
   juegoNuevo.iniciarJuego();
+  while (juegoNuevo.jugadores.length < 2 || juegoNuevo.categorias.length < 2) {
+    return alert("Debe agregar al menos dos jugadores y dos categorías antes de iniciar el juego.");
+  }
   juegoNuevo.jugadores.forEach(j => j.mostrarInformacion());
   juegoNuevo.mostrarInformacionSecreta();
 }

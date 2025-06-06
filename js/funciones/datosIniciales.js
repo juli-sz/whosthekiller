@@ -1,25 +1,21 @@
 import Categoria from '../clases/Categoria.js';
 
 export function cargarDatosIniciales(juego) {
-  juego.agregarJugador("Juli B");
-  juego.agregarJugador("Lia");
-  juego.agregarJugador("Nati");
-  juego.agregarJugador("Nai");
-  juego.agregarJugador("Juli S");
+  // ...definición de Juego, Jugador, Categoria...
 
-  const armas = new Categoria("Armas");
-  ["cuchillo", "candelabro", "pistola", "veneno", "trofeo", "cuerda", "bate", "hacha", "pesas"]
-    .forEach(item => armas.addItem(item));
+fetch('ejemplo.json')
+  .then(response => response.json())
+  .then(data => {
+    // Jugadores
+    data.jugadores.forEach(nombre => juegoNuevo.agregarJugador(nombre));
 
-  const lugares = new Categoria("Lugares");
-  ["vestibulo", "comedor", "cocina", "patio", "observatorio", "teatro", "sala", "spa", "hab de huespedes"]
-    .forEach(item => lugares.addItem(item));
-
-  const sospechosos = new Categoria("Sospechosos");
-  ["Moradillo", "Blanco", "Mostaza", "Verdi", "Escarlata", "Azulino"]
-    .forEach(item => sospechosos.addItem(item));
-
-  juego.categorias.push(armas, lugares, sospechosos);
+    // Categorías
+    data.categorias.forEach(catData => {
+      let categoria = new Categoria(catData.nombre);
+      catData.items.forEach(item => categoria.addItem(item));
+      juegoNuevo._categorias.push(categoria);
+    });
+  });
 }
 export function reiniciarDatosIniciales(juego) {
   juego.jugadores = [];

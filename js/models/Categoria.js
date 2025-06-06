@@ -6,7 +6,7 @@ export default class Categoria {
     this.nombre = nombre;
     this.items = [];
   }
-
+  
   addItem(nombreItem) {
     this.items.push(nombreItem);
   }

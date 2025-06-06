@@ -1,5 +1,3 @@
-
-
 import { juegoNuevo } from '../main.js';
 
 export function agregarCategorias() {
@@ -46,3 +44,15 @@ export function editarJuego() {
   $("#botonAgregarCategorias").toggle();
   $("#botonAgregarItem").toggle();
 }
+
+
+
+// Asigna las funciones al objeto global window para que funcionen los onclick del HTML
+window.agregarJugadores = agregarJugadores;
+window.agregarCategorias = agregarCategorias;
+window.agregarItem = agregarItem;
+
+// Si tienes estas funciones, también asígnalas:
+window.editarJuego = editarJuego;
+window.inicioJuego = inicioJuego;
+window.verMarcador = verMarcador;
