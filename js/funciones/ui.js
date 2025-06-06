@@ -1,58 +1,88 @@
-import { juegoNuevo } from '../main.js';
+import Categoria from "../models/Categoria.js";
+import Jugador from "../models/Jugador.js";
 
-export function agregarCategorias() {
-  const nombre = prompt("Ingrese el nombre de la categoría:");
-  const nuevaCat = new Categoria(nombre);
-  let seguir = true;
+export default class UI {
+  constructor() {
+    this.jugadores = [];
+    this.categorias = [];
+    this.informacionSecreta = [];
+  }
 
-  while (seguir) {
-    const item = prompt("Ingrese un item (escriba 'exit' para salir):");
-    if (item.toLowerCase() !== 'exit') {
-      nuevaCat.addItem(item);
-    } else {
-      seguir = false;
+  agregarJugador(nombre) {
+    const jugador = new Jugador(nombre);
+    this.jugadores.push(jugador);
+    console.log(`Jugador ${nombre} agregado.`);
+  }
+
+  agregarJugadores() {
+    const nombre = prompt("Ingrese el nombre del jugador:");
+    if (nombre) this.agregarJugador(nombre);
+  }
+
+  agregarCategoria(nombre) {
+    const categoria = new Categoria(nombre);
+    this.categorias.push(categoria);
+    console.log(`Categoría ${nombre} agregada.`);
+  }
+
+  agregarCategorias() {
+    const nombre = prompt("Ingrese el nombre de la categoría:");
+    if (!nombre) return;
+    const nuevaCat = new Categoria(nombre);
+    let seguir = true;
+    while (seguir) {
+      const item = prompt("Ingrese un item (escriba 'exit' para salir):");
+      if (item && item.toLowerCase() !== 'exit') {
+        nuevaCat.addItem(item);
+      } else {
+        seguir = false;
+      }
+    }
+    this.categorias.push(nuevaCat);
+    alert(`Categoría ${nombre} agregada.`);
+  }
+
+  agregarItem() {
+    let lista = this.categorias.map(cat => cat.getNombre()).join(', ');
+    const nombre = prompt(`¿A qué categoría quiere agregar items? (${lista})`);
+    const categoria = this.categorias.find(cat => cat.getNombre() === nombre);
+    if (!categoria) return alert("Categoría no encontrada");
+    let seguir = true;
+    while (seguir) {
+      const item = prompt("Ingrese un item (escriba 'exit' para salir):");
+      if (item && item.toLowerCase() !== 'exit') {
+        categoria.addItem(item);
+      } else {
+        seguir = false;
+      }
     }
   }
 
-  juegoNuevo.categorias.push(nuevaCat);
-}
+  editarJuego() {
+    $("#botonJugadores").toggle();
+    $("#botonAgregarCategorias").toggle();
+    $("#botonAgregarItem").toggle();
+  }
 
-export function agregarJugadores() {
-  const nombre = prompt("Ingrese el nombre del jugador:");
-  juegoNuevo.agregarJugador(nombre);
-}
+  inicioJuego() {
+    alert("¡Comienza el juego!");
+    // Lógica para iniciar el juego
+  }
 
-export function agregarItem() {
-  juegoNuevo.categorias.forEach(cat => console.log(cat.getNombre(), cat.getItems()));
-  const nombre = prompt("¿A qué categoría quiere agregar items?");
-  const categoria = juegoNuevo.categorias.find(cat => cat.getNombre() === nombre);
-  if (!categoria) return alert("Categoría no encontrada");
-
-  let seguir = true;
-  while (seguir) {
-    const item = prompt("Ingrese un item (escriba 'exit' para salir):");
-    if (item.toLowerCase() !== 'exit') {
-      categoria.addItem(item);
-    } else {
-      seguir = false;
-    }
+  verMarcador() {
+    alert("Mostrando marcador (a implementar)");
+    // Lógica para mostrar el marcador
   }
 }
 
-export function editarJuego() {
-  $("#botonJugadores").toggle();
-  $("#botonAgregarCategorias").toggle();
-  $("#botonAgregarItem").toggle();
-}
+import UI from './funciones/ui.js';
 
+export const ui = new UI();
 
-
-// Asigna las funciones al objeto global window para que funcionen los onclick del HTML
-window.agregarJugadores = agregarJugadores;
-window.agregarCategorias = agregarCategorias;
-window.agregarItem = agregarItem;
-
-// Si tienes estas funciones, también asígnalas:
-window.editarJuego = editarJuego;
-window.inicioJuego = inicioJuego;
-window.verMarcador = verMarcador;
+// Asigna los métodos de instancia al window para los botones
+window.agregarJugadores = () => ui.agregarJugadores();
+window.agregarCategorias = () => ui.agregarCategorias();
+window.agregarItem = () => ui.agregarItem();
+window.editarJuego = () => ui.editarJuego();
+window.inicioJuego = () => ui.inicioJuego && ui.inicioJuego();
+window.verMarcador = () => ui.verMarcador && ui.verMarcador();
