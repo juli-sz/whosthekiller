@@ -64,18 +64,11 @@ export default class UI {
     $("#botonAgregarItem").toggle();
   }
 
-  inicioJuego() {
-    alert("¡Comienza el juego!");
-    // Lógica para iniciar el juego
-  }
-
   verMarcador() {
     alert("Mostrando marcador (a implementar)");
     // Lógica para mostrar el marcador
   }
 }
-
-import UI from './funciones/ui.js';
 
 export const ui = new UI();
 
