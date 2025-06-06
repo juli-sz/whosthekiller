@@ -1,6 +1,22 @@
 import Categoria from "../models/Categoria.js";
 import Jugador from "../models/Jugador.js";
 
+// Importa los modelos necesarios
+import { mostrarInformacionSecreta } from './informacionSecreta.js';  
+// Importa los modelos necesarios
+import { iniciarJuego } from './iniciarJuego.js';
+
+// Importa los modelos necesarios
+import { editarJuego } from './editarJuego.js';
+// Importa los modelos necesarios
+import { agregarJugadores } from './agregarJugadores.js';
+// Importa los modelos necesarios
+import { agregarCategorias } from './agregarCategorias.js';
+// Importa los modelos necesarios
+import { agregarItem } from './agregarItem.js';
+// Importa los modelos necesarios
+import { verMarcador } from './verMarcador.js';
+
 export default class UI {
   constructor() {
     this.jugadores = [];
@@ -68,7 +84,50 @@ export default class UI {
     alert("Mostrando marcador (a implementar)");
     // Lógica para mostrar el marcador
   }
+  inicioJuego() {
+    if (this.jugadores.length < 2 || this.categorias.length < 2) {
+      return alert("Debe agregar al menos dos jugadores y dos categorías antes de iniciar el juego.");
+    }
+    this.jugadores.forEach(j => j.mostrarInformacion());
+    this.mostrarInformacionSecreta();
+    this.iniciarJuego();
+    alert("¡El juego ha comenzado!");
+  }
 }
+
+
+let Juego = {
+  constructor() {
+    this._jugadores = [];
+    this._categorias = [];
+    this._informacionSecreta = [];
+  },
+
+  mezclarItems(items) {
+    for (let i = items.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+  },
+
+  repartirItems() {
+    let i = 0;
+    this._categorias.forEach(cat => {
+      cat.items.forEach(item => {
+        this._jugadores[i].entregarInformacion(item);
+        i = (i + 1) % this._jugadores.length;
+      });
+    });
+  }
+
+  // ...otros métodos...
+}
+
+
+
+
+
+
 
 export const ui = new UI();
 
