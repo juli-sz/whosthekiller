@@ -1,28 +1,12 @@
-import Juego from './models/Juego.js';
 import Categoria from './models/Categoria.js';
 import Jugador from './models/Jugador.js';
+import ui from './funciones/ui.js';
 
+// function verMarcador() {
+//   alert("Ganadores anteriores:\n" + juegoNuevo.ganadores.join(", "));
+// };
 
-import { agregarCategorias, agregarItem, agregarJugadores, editarJuego } from './funciones/ui.js';
-import { cargarDatosIniciales, reiniciarDatosIniciales } from './funciones/datosIniciales.js';
-
-export const juegoNuevo = new Juego();
-cargarDatosIniciales(juegoNuevo);
-
-function inicioJuego() {
-  juegoNuevo.iniciarJuego();
-  while (juegoNuevo.jugadores.length < 2 || juegoNuevo.categorias.length < 2) {
-    return alert("Debe agregar al menos dos jugadores y dos categorías antes de iniciar el juego.");
-  }
-  juegoNuevo.jugadores.forEach(j => j.mostrarInformacion());
-  juegoNuevo.mostrarInformacionSecreta();
-}
-
-function verMarcador() {
-  alert("Ganadores anteriores:\n" + juegoNuevo.ganadores.join(", "));
-}
-
-$(document).ready(function () {
+/* $(document).ready(function () {
   $("#botonJugar").click(inicioJuego);
   $("#botonMarcador").click(verMarcador);
   $("#botonEditar").click(editarJuego);
@@ -31,3 +15,26 @@ $(document).ready(function () {
   $("#botonAgregarItem").click(agregarItem);
   $("#botonReiniciar").click(() => reiniciarDatosIniciales(juegoNuevo));
 });
+ */
+
+        // Asignar funciones a botones usando jQuery
+        $(document).ready(function () {
+          $("#botonJugar").click(() => ui.inicioJuego());
+          $("#botonMarcador").click(() => ui.verMarcador());
+          $("#botonEditar").click(() => ui.editarJuego());
+          $("#botonJugadores").click(() => ui.agregarJugadores());
+          $("#botonAgregarCategorias").click(() => ui.agregarCategorias());
+          $("#botonAgregarItem").click(() => ui.agregarItem());
+        });
+
+
+    
+
+
+// Asigna las funciones al objeto global window para que funcionen los onclick del HTML
+window.inicioJuego = ui.inicioJuego.bind(ui);
+window.verMarcador = ui.verMarcador.bind(ui);
+window.editarJuego = ui.editarJuego.bind(ui);
+window.agregarJugadores = ui.agregarJugadores.bind(ui);
+window.agregarCategorias = ui.agregarCategorias.bind(ui);
+window.agregarItem = ui.agregarItem.bind(ui);
