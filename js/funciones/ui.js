@@ -1,27 +1,13 @@
 import Categoria from "../models/Categoria.js";
 import Jugador from "../models/Jugador.js";
 
-// Importa los modelos necesarios
-import { mostrarInformacionSecreta } from './informacionSecreta.js';  
-// Importa los modelos necesarios
-import { iniciarJuego } from './iniciarJuego.js';
-
-// Importa los modelos necesarios
-import { editarJuego } from './editarJuego.js';
-// Importa los modelos necesarios
-import { agregarJugadores } from './agregarJugadores.js';
-// Importa los modelos necesarios
-import { agregarCategorias } from './agregarCategorias.js';
-// Importa los modelos necesarios
-import { agregarItem } from './agregarItem.js';
-// Importa los modelos necesarios
-import { verMarcador } from './verMarcador.js';
 
 export default class UI {
   constructor() {
     this.jugadores = [];
     this.categorias = [];
-    this.informacionSecreta = [];
+    // Información secreta de los jugadores
+    this._informacionSecreta = [];
   }
 
   agregarJugador(nombre) {
@@ -90,7 +76,6 @@ export default class UI {
     }
     this.jugadores.forEach(j => j.mostrarInformacion());
     this.mostrarInformacionSecreta();
-    this.iniciarJuego();
     alert("¡El juego ha comenzado!");
     this._informacionSecreta = [];
       this._categorias.forEach(cat => {
@@ -147,7 +132,7 @@ let Juego = {
 
 
 export const ui = new UI();
-
+if (typeof window !== "undefined") {
 // Asigna los métodos de instancia al window para los botones
 window.agregarJugadores = () => ui.agregarJugadores();
 window.agregarCategorias = () => ui.agregarCategorias();
@@ -155,3 +140,4 @@ window.agregarItem = () => ui.agregarItem();
 window.editarJuego = () => ui.editarJuego();
 window.inicioJuego = () => ui.inicioJuego && ui.inicioJuego();
 window.verMarcador = () => ui.verMarcador && ui.verMarcador();
+}
