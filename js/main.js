@@ -3,26 +3,7 @@ import Jugador from './models/Jugador.js';
 import {ui} from './funciones/ui.js';
 
 
-import {inicioJuego, mostrarInformacionSecreta, agregarCategorias, agregarJugadores, agregarItem, verMarcador} from './funciones/ui.js';
 
-export function inicioJuego() {
-  while (ui.jugadores.length < 2 || ui.categorias.length < 2) {
-    return alert("Debe agregar al menos dos jugadores y dos categorías antes de iniciar el juego.");
-  }
-  ui.jugadores.forEach(j => j.mostrarInformacion());
-  mostrarInformacionSecreta();
-  ui.iniciarJuego();
-  alert("¡El juego ha comenzado!");
-  this._informacionSecreta = [];
-    this._categorias.forEach(cat => {
-      this.mezclarItems(cat.items);
-      const item = cat.items.pop();
-      this._informacionSecreta.push(item);
-    });
-    this.repartirItems();
-
-  
-};
 
 
 

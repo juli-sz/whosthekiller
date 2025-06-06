@@ -92,8 +92,24 @@ export default class UI {
     this.mostrarInformacionSecreta();
     this.iniciarJuego();
     alert("¡El juego ha comenzado!");
+    this._informacionSecreta = [];
+      this._categorias.forEach(cat => {
+        this.mezclarItems(cat.items);
+        const item = cat.items.pop();
+        this._informacionSecreta.push(item);
+      });
+      this.repartirItems();
   }
-}
+  mostrarInformacionSecreta() {
+    this._informacionSecreta.forEach((info, index) => {
+      alert(`Información secreta del jugador ${index + 1}: ${info}`);
+    });
+  }
+    
+
+};
+
+
 
 
 let Juego = {
@@ -122,6 +138,7 @@ let Juego = {
 
   // ...otros métodos...
 }
+
 
 
 
