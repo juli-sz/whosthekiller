@@ -1,6 +1,6 @@
 const datos =
 {
-  "jugadores": ["Juli B", "Lia", "Nati", "Nai", "Juli S"],
+  "jugadores": [{"nombre": "Juli B"}, {"nombre": "Lia"}, {"nombre": "Nati"}, {"nombre": "Nai"}, {"nombre": "Juli S"}],
   "categorias": [
     {
       "nombre": "Armas",

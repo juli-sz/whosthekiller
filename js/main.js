@@ -17,6 +17,19 @@ import ui from './funciones/ui.js';
 });
  */
 
+
+import UI from './js/funciones/ui.js';
+import { datos } from './js/datos.js'; // o define datos aquí
+
+const ui = new UI(datos);
+
+window.agregarJugadores = () => ui.agregarJugadores();
+window.agregarCategorias = () => ui.agregarCategorias();
+window.agregarItem = () => ui.agregarItem();
+window.editarJuego = () => ui.editarJuego();
+window.inicioJuego = () => ui.inicioJuego && ui.inicioJuego();
+window.verMarcador = () => ui.verMarcador && ui.verMarcador();
+
         // Asignar funciones a botones usando jQuery
         $(document).ready(function () {
           $("#botonJugar").click(() => ui.inicioJuego());
@@ -28,13 +41,16 @@ import ui from './funciones/ui.js';
         });
 
 
+afterAll(() => {
+  alert.mockRestore && alert.mockRestore();
+});
     
 
 
-// Asigna las funciones al objeto global window para que funcionen los onclick del HTML
-window.inicioJuego = ui.inicioJuego.bind(ui);
-window.verMarcador = ui.verMarcador.bind(ui);
-window.editarJuego = ui.editarJuego.bind(ui);
-window.agregarJugadores = ui.agregarJugadores.bind(ui);
-window.agregarCategorias = ui.agregarCategorias.bind(ui);
-window.agregarItem = ui.agregarItem.bind(ui);
+// // Asigna las funciones al objeto global window para que funcionen los onclick del HTML
+// window.inicioJuego = ui.inicioJuego.bind(ui);
+// window.verMarcador = ui.verMarcador.bind(ui);
+// window.editarJuego = ui.editarJuego.bind(ui);
+// window.agregarJugadores = ui.agregarJugadores.bind(ui);
+// window.agregarCategorias = ui.agregarCategorias.bind(ui);
+// window.agregarItem = ui.agregarItem.bind(ui);
