@@ -53,27 +53,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  notify:
-    name: Notify Slack
-    needs: deploy
-    runs-on: ubuntu-latest
-    if: always()  # Se ejecuta siempre, pase o falle
-    steps:
-      - name: Notificar estado de despliegue
-        run: |
-          if [ "${{ needs.deploy.result }}" == "success" ]; then
-            curl -X POST -H 'Content-type: application/json' \
-              --data '{"text":"✅ *Deploy a GitHub Pages exitoso* para `release`. ¡Todo salió bien! 🚀"}' \
-              ${{ secrets.SLACK_WEBHOOK_URL }}
-          else
-            curl -X POST -H 'Content-type: application/json' \
-              --data '{"text":"❌ *Falló el deploy a GitHub Pages* para `release`. Revisar errores 😓"}' \
-              ${{ secrets.SLACK_WEBHOOK_URL }}
-          fi
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_RUN_ID: ${{ github.run_id }}
+  
 
 
 
